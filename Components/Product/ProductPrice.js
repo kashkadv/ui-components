@@ -1,14 +1,16 @@
-function ProductPrice({ size, value }) {
+function ProductPrice({ size, data }) {
+
+  const { regularPrice, salePrice = null } = data
 
   const priceClasses = {
     'xs': 'text-xs',
     'sm': 'text-sm',
     'lg': 'text-lg',
-    'xl': 'text-xl',
+    'xl': 'text-h4 font-black text-greyDark'
   }
-
+  
   return (
-    <div className={`font-medium ${priceClasses[size]}`}>{value}</div>
+    <div className={priceClasses[size]}>{regularPrice}</div>
   )
 }
 export default ProductPrice
