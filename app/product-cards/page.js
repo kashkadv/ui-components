@@ -3,7 +3,7 @@ import ProductGrid from "@/Components/Product/ProductGrid"
 const products = [
   {
     id: 1,
-    name: 'Product 1',
+    name: 'Жилетка',
     image: 'https://gushka.ua/_next/image?url=https%3A%2F%2Fgushka.1b.app%2Fmedia%2Fshop%2F%2Fee%2F1f%2Fee1f919283297fa421f9a8e849f4b02b.jpg&w=3840&q=75',
     price: 100,
   },
@@ -15,7 +15,7 @@ const products = [
   },
   {
     id: 3,
-    name: 'Product 3',
+    name: 'Ліжник',
     image: 'https://gushka.ua/_next/image?url=https%3A%2F%2Fgushka.1b.app%2Fmedia%2Fshop%2Fb0%2F62%2Fb06210c8f8b396ee56d380772380176f.png&w=640&q=75',      
     price: 300,      
   },

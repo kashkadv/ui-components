@@ -45,7 +45,7 @@ function ProductGallery() {
   return (
     <div className="relative flex items-center justify-center w-full bg-white/90  h-full shadow-xl">
 
-      <div ref={containerRef} className="bg-red-100 h-[calc(100%-200px)] w-[calc(100%-200px)] overflow-y-scroll no-scrollbar relative">
+      <div ref={containerRef} className="h-[calc(100%-200px)] w-[calc(100%-200px)] overflow-y-scroll no-scrollbar relative">
         {images.map((src, index) => (
           <div
             key={index}

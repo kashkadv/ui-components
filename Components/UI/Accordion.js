@@ -19,7 +19,7 @@ function Accordion({ content, currentTab = null, callback = null }) {
     <>
       {content.map((tab, index) => (
         <div id={`accordion-tab-${index}`} key={index} className="text-h5">
-          <div onClick={() => handleToggle(index)} className="cursor-pointer bg-red-100">
+          <div onClick={() => handleToggle(index)} className="cursor-pointer">
             {tab.label}
           </div>
           <div
