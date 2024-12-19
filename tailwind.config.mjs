@@ -6,6 +6,7 @@ export default {
     "./Components/**/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
+  
   theme: {
     extend: {
       colors: {
@@ -26,11 +27,12 @@ export default {
         'h4': ['1.5rem', { lineHeight: '1.5' }], // 24px
         'h5': ['1.25rem', { lineHeight: '1.6' }], // 20px
         'h6': ['1rem', { lineHeight: '1.75' }],  // 16px
-        'body': ['1rem', { lineHeight: '1.6' }],  // Paragraph size
+        'body': ['0.875rem', { lineHeight: '1.6' }],  // Paragraph size
         'small': ['0.7rem', {lineHeight: '1'}]
       },
     },
   },
+
   plugins: [
     require("@xpd/tailwind-3dtransforms")
   ],
