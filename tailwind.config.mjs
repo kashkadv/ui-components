@@ -9,6 +9,7 @@ export default {
   theme: {
     extend: {
       colors: {
+        transparent: "rgba(0,0,0,0)",
         background: "var(--background)",
         foreground: "var(--foreground)",
         greyLight: "var(--greyLight)",

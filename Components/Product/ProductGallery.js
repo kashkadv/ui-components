@@ -68,7 +68,7 @@ function ProductGallery() {
             <button
               key={index}
               onClick={() => scrollToImage(index)}
-              className={`!w-3 !h-3 flex rounded-full transition border-[1px] bg-grey border-grey ${
+              className={`!w-3 !h-3 flex rounded-full transition bg-grey border-grey ${
                 activeIndex === index ? "bg-grey" : "opacity-10"
               }`}
             ></button>
