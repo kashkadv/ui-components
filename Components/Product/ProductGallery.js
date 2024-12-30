@@ -90,8 +90,8 @@ function ProductGallery() {
 
 function PopupTrigger({ handlePopupState }) {
   return (
-    <button className=" z-10 bottom-0 right-0" onClick={handlePopupState}>
-      <UseIcon id="search-plus" w="6" className="text-greyDark transition-all hover:text-greyLight" />
+    <button className="z-10 bottom-0 right-0" onClick={handlePopupState}>
+      <UseIcon id="search-plus" w="6" className="text-greyLight transition-all hover:text-greyDark" />
     </button>
   )
 }

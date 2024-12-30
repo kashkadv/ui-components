@@ -1,3 +1,4 @@
+import CategoryPage from "@/Components/Pages/CategoryPage"
 import ProductGrid from "@/Components/Product/ProductGrid"
 
 const products = [
@@ -52,10 +53,6 @@ const products = [
 ]
 
 function page() {
-  return (
-    <div className="p-24 space-y-24">
-      <ProductGrid products={products} />
-    </div>
-  )
+  return <CategoryPage products={products} />
 }
 export default page

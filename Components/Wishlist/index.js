@@ -53,7 +53,7 @@ import UseIcon from "../UI/UseIcon";
       <div className="w-5 h-5 mb-[7px] relative text-greyDark group">
         {!loading && (
           <>
-            <button onClick={isInWishlist ? handleRemoveFromWishlist : handleAddToWishlist} >
+            <button className="text-grey transition-all hover:text-greyDark" onClick={isInWishlist ? handleRemoveFromWishlist : handleAddToWishlist} >
               {isInWishlist ? <UseIcon id="file-heart-selected" w="5.4" /> : <UseIcon id="file-heart" w="5.4" />}
             </button>
             <div className="absolute w-max bg-white py-2 px-4 text-black rounded-xl shadow-xl tracking-widest text-small pointer-events-none opacity-0 group-hover:opacity-100 transition-all">Add product to wishlist</div>
