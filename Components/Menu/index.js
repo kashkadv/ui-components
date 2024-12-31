@@ -10,7 +10,7 @@ function DesktopMenuTrigger() {
   const { handleMenuOpen } = useAppContext()
 
   return (
-    <Button onClick={handleMenuOpen} className="text-greyDark focus:text-greyDark hover:text-greyLight px-8">
+    <Button onClick={handleMenuOpen} className="text-greyDark focus:text-greyDark hover:text-greyLight">
       <UseIcon id="menu" w="8" />
     </Button>
   )
@@ -41,7 +41,7 @@ function MenuList({ items }) {
           className={`text-center opacity-0 ${menuOpen ? 'ltr:animate-slideInRight rtl:animate-slideInLeft' : ''}`}
           style={{ animationDelay: `${(i + 1) * delay}ms`}}
         >
-          <Link href={item.href} className="text-center hover:text-greyDark transition-all text-h1">
+          <Link href={item.href} className="text-center hover:text-greyDark transition-all text-h1 font-bold">
             {item.label}
           </Link>
         </div>

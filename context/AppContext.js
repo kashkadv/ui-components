@@ -11,18 +11,18 @@ function App({ children }) {
 
   const [menuOpen, setMenuOpen] = useState(false)
   const [cartOpen, setCartOpen] = useState(false)
-  const [favoriteOpen, setFavoriteOpen] = useState(false)
+  const [wishlistOpen, setWishlistOpen] = useState(false)
 
   useEffect(() => {
-    (!menuOpen && !cartOpen && !favoriteOpen)
+    (!menuOpen && !cartOpen && !wishlistOpen)
       ? toggleScrollbar(false)
       : toggleScrollbar(true)
-  }, [menuOpen, cartOpen, favoriteOpen])
+  }, [menuOpen, cartOpen, wishlistOpen])
 
   const handleCartOpen = () => {
     setCartOpen(!cartOpen)
     setMenuOpen(false)
-    setFavoriteOpen(false)
+    setWishlistOpen(false)
   }
 
   const handleMenuOpen = () => {
@@ -30,11 +30,11 @@ function App({ children }) {
 
     setMenuOpen(!menuOpen)
     setCartOpen(false)
-    setFavoriteOpen(false)
+    setWishlistOpen(false)
   }
 
-  const handleFavoriteOpen = () => {
-    setFavoriteOpen(!favoriteOpen)
+  const handleWishlistOpen = () => {
+    setWishlistOpen(!wishlistOpen)
     setMenuOpen(false)
     setCartOpen(false)
   }
@@ -44,8 +44,8 @@ function App({ children }) {
     cartOpen,
     handleMenuOpen,
     menuOpen,
-    handleFavoriteOpen,
-    favoriteOpen
+    handleWishlistOpen,
+    wishlistOpen
   }
 
   return (

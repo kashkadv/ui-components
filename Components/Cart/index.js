@@ -9,7 +9,7 @@ function CartTrigger() {
   const { handleCartOpen } = useAppContext()
 
   return (
-    <Button onClick={handleCartOpen} className="text-greyDark focus:text-greyDark hover:text-greyLight px-9">
+    <Button onClick={handleCartOpen} className="text-greyDark focus:text-greyDark hover:text-greyLight">
       <UseIcon id="cart" w="6" />
     </Button>
   )

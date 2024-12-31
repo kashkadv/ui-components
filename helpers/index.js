@@ -1,4 +1,4 @@
-export function getScrollBarWidth () { 
+function getScrollBarWidth () { 
   var inner = document.createElement('p'); 
   inner.style.width = "100%"; 
   inner.style.height = "200px"; 
@@ -24,9 +24,15 @@ export function getScrollBarWidth () {
   return (w1 - w2); 
 };
 
-export function toggleScrollbar(show) {
-  const scrollbarWidth = getScrollBarWidth()
+function checkHasScrollbar() {
+  return document.documentElement.scrollHeight > document.documentElement.clientHeight
+}
 
+export function toggleScrollbar(show) {
+
+  if (!checkHasScrollbar()) return
+
+  const scrollbarWidth = getScrollBarWidth()
   const root = document.getElementsByTagName('html')[0]
   
   if (!show) {

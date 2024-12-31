@@ -10,6 +10,12 @@ export default {
   
   theme: {
     extend: {
+      screens: {
+        'tablet': '768px',
+        'laptop': '1200px',
+        'desktop': '1400px',
+      },
+
       colors: {
         transparent: "rgba(0,0,0,0)",
         background: "var(--background)",
@@ -21,6 +27,7 @@ export default {
         green: "var(--green)",
         greenLight: "var(--greeenLight)",
       },
+
       fontSize: {
         'h1': ['2.75rem', { lineHeight: '1.2' }], // 44px
         'h2': ['2.25rem', { lineHeight: '1.3' }], // 36px

@@ -85,7 +85,7 @@ function ProductPage() {
 
   return (
     <ProductPageContext.Provider value={context}>
-      <div className="px-24 py-12 flex flex-col gap-24">
+      <div className="flex flex-col gap-24">
         <div className="grid grid-cols-2 gap-24">        
           <div className="w-full min-h-[800px] h-[calc(80dvh)] flex justify-start">
             <ProductGallery />

@@ -19,8 +19,8 @@ function Sidebar({ isOpen, direction = "right", callback, className = "", childr
   }
 
   const closeClassNames = {
-    'right': 'ltr:left-12 rtl:right-12',
-    'left': 'ltr:right-12 rtl:left-12',
+    'right': 'ltr:left-6 rtl:right-6 ltr:laptop:left-12 rtl:laptop:right-12',
+    'left': 'ltr:right-6 rtl:left-6 ltr:laptop:right-12 rtl:laptop:left-12',
   }
 
   const stateClassNames = isOpen
@@ -108,12 +108,12 @@ function Sidebar({ isOpen, direction = "right", callback, className = "", childr
 
   return (
     <div
-      className={`animate-all fixed top-0 left-0 w-full h-full flex justify-center items-center z-50 p-12 ${stateClassNames} ${className}`}
+      className={`animate-all fixed top-0 left-0 w-full h-full flex justify-center items-center z-50 p-6 laptop:p-12 ${stateClassNames} ${className}`}
       style={{
         pointerEvents: isOpen ? 'auto' : 'none',
       }}
     >
-      <Button onClick={handleClose} className={`absolute z-50 [&>*]:pointer-events-none top-12 ${closeClassNames[direction]}`}>
+      <Button onClick={handleClose} className={`absolute z-50 [&>*]:pointer-events-none top-6 laptop:top-12 ${closeClassNames[direction]}`}>
         <UseIcon id="x" w="8" />
       </Button>
 
