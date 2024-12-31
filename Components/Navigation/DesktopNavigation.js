@@ -3,6 +3,9 @@
 import useScrollPosition from "@/hooks/UseScrollPosition"
 import UseIcon from "../UI/UseIcon"
 import Link from "next/link"
+import { CartTrigger } from "../Cart"
+import { FavoriteTrigger } from "../Favorite"
+import {DesktopMenuTrigger} from "../Menu"
 
 const distance = 48
 
@@ -14,14 +17,18 @@ function DesktopNavigation() {
 
   return (
     <div className={`group mt-12 z-10 w-full flex ${wrapperClassNames}`}>
-      <div className={`h-16 w-full px-6 transition-all duration-500 flex items-center justify-between  ${barClassNames}`}>
+      <div className={`h-16 w-full transition-all duration-500 flex items-center justify-between  ${barClassNames}`}>
+        <DesktopMenuTrigger scrolled={scrolled} />
+        <Link href="/" className="flex items-center gap-2 text-greyDark transition-all hover:text-grey"><UseIcon id="gushka-logo" className="h-fit" w="28" h="12" /></Link>
         <div className="flex items-center">
-          <UseIcon id="menu" w="8" className={` ${scrolled && '!ml-3 mr-8'} ml-1 mr-5 text-greyDark transition-all duration-500 hover:text-greyLight`} />
+          <FavoriteTrigger />
+          <CartTrigger />
         </div>
-          <Link href="/" className="flex items-center gap-2 text-greyDark transition-all hover:text-grey"><UseIcon id="gushka-logo" w="32" /></Link>
-          <div>1</div>
       </div>
     </div>
   )
 }
+
+
+
 export default DesktopNavigation

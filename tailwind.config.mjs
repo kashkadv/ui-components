@@ -1,3 +1,4 @@
+
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
@@ -29,6 +30,22 @@ export default {
         'h6': ['1rem', { lineHeight: '1.75' }],  // 16px
         'body': ['0.875rem', { lineHeight: '1.6' }],  // Paragraph size
         'small': ['0.7rem', {lineHeight: '1'}]
+      },
+
+      animation: {
+        slideInRight: 'slideInRight 0.5s ease-out forwards',
+        slideInLeft: 'slideInLeft 0.5s ease-out forwards',
+      },
+
+      keyframes: {
+        slideInRight: {
+          '0%': { transform: 'translateX(-100%)', opacity: 0},
+          '100%': { transform: 'translateX(0%)', opacity: 1}
+        },
+        slideInLeft: {
+          '0%': { transform: 'translateX(100%)', opacity: 0},
+          '100%': { transform: 'translateX(0%)', opacity: 1}
+        },
       },
     },
   },

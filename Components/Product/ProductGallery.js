@@ -1,7 +1,8 @@
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState, useEffect, use } from "react";
 import Image from "next/image";
 import { useProductPage } from "../Pages/ProductPage";
 import UseIcon from "../UI/UseIcon";
+import { toggleScrollbar } from "@/helpers";
 
 function ProductGallery() {
   const { images } = useProductPage()
@@ -97,7 +98,11 @@ function PopupTrigger({ handlePopupState }) {
 }
 
 function GalleryPopup({isOpen, handlePopupState}) {
-  const { images } = useProductPage()  
+  const { images } = useProductPage()
+
+  useEffect(() => {
+    toggleScrollbar(isOpen)
+  }, [isOpen])
 
   if (!isOpen) return 
 

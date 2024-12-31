@@ -2,6 +2,13 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import DesktopNavigation from "@/Components/Navigation/DesktopNavigation";
+import { App } from "@/context/AppContext";
+import { Cart } from "@/Components/Cart";
+import { Favorite } from "@/Components/Favorite";
+import { Menu } from "@/Components/Menu";
+
+// TODO remove mock data
+import { menuItems } from "@/helpers/mockData";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -20,11 +27,18 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" dir='ltr' >
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased relative`}>
-        <DesktopNavigation />
-        {children}
-      </body>
-    </html>
+    <App>
+      <html lang="en" dir='ltr'>
+        <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+          <DesktopNavigation />
+          {children}
+          
+          <Menu items={menuItems} />
+          <Cart />
+          <Favorite />
+
+        </body>
+      </html>
+    </App>
   );
 }
