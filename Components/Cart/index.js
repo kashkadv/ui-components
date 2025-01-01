@@ -4,25 +4,40 @@ import { useAppContext } from "@/context/AppContext"
 import Button from "../UI/Button"
 import UseIcon from "../UI/UseIcon"
 import Sidebar from "../UI/Sidebar"
+import { useCartContext } from "@/context/CartContext"
+import NoContent from "../UI/NoContent"
 
 function CartTrigger() {
   const { handleCartOpen } = useAppContext()
+  const { cart } = useCartContext()
+
+  const labelFullClassNames = cart.length !== 0 && "opacity-100"
 
   return (
-    <Button onClick={handleCartOpen} className="text-greyDark focus:text-greyDark hover:text-greyLight">
-      <UseIcon id="cart" w="6" />
+    <Button onClick={handleCartOpen} className="relative text-greyDark focus:text-greyDark hover:text-greyLight">
+      <UseIcon id="cart" w="6" className="z-10" />
+      <div className={`absolute top-0 right-0 opacity-0 transition-all w-3 h-3 bg-green rounded-full translate-x-1 -translate-y-0 ${labelFullClassNames}`}></div>
     </Button>
   )
 }
 
 function Cart() {
   const { cartOpen, handleCartOpen } = useAppContext()
-
+  
   return (
-    <Sidebar  isOpen={cartOpen} callback={handleCartOpen} direction="left" className="bg-background text-grey">
-      Cart
+    <Sidebar isOpen={cartOpen} callback={handleCartOpen} direction="left" className="bg-background text-grey">
+      <CartList />
     </Sidebar>
   )
+}
+
+function CartList() {
+  const { cart } = useCartContext()
+
+  // TODO add message when cart is empty
+  if (!cart || cart.length === 0) return <NoContent message="Empty Cart Message" />
+
+  return 'Cart List'
 }
 
 export { CartTrigger, Cart }

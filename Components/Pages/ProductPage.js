@@ -5,8 +5,7 @@ import ProductInfoAccordion from "@/Components/Product/ProductInfoAccordion";
 import ProductInfoNavigation from "@/Components/Product/ProductInfoNavigation";
 import ProductOrderBlock from "@/Components/Product/ProductOrderBlock";
 import { createContext, useContext, useState } from "react";
-import UseIcon from "../UI/UseIcon";
-import { WishlistButton } from "../Wishlist";
+import { AddToWishlistButton } from "../Wishlist";
 
 // TODO remove mockdata
 const images = [
@@ -64,7 +63,6 @@ const info = [
 
 const ProductPageContext = createContext()
 
-
 function ProductPage() {
   const [productInfoActiveIndex, setProductInfoActiveIndex] = useState(null);
 
@@ -93,7 +91,7 @@ function ProductPage() {
           <div className="flex-1 flex flex-col items-stretch justify-between py-24">
             <div className="flex flex-col gap-3">
               <div className="flex items-end gap-3 ">
-                <WishlistButton product={product} />
+                <AddToWishlistButton product={product} />
                 <h1 className="text-4xl font-bold leading-none">Product Title</h1>
               </div>
               <div className="text-grey font-medium">SKU: 123456789</div>

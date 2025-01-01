@@ -1,12 +1,12 @@
 'use client'
 
-import { getScrollBarWidth, toggleScrollbar } from "@/helpers"
+import { toggleScrollbar } from "@/helpers"
 
 const { useContext, createContext, useState, use, useEffect } = require("react")
 
 const AppContext = createContext()
 
-function App({ children }) {
+function AppProvider({ children }) {
   const [theme, setTheme] = useState('light')
 
   const [menuOpen, setMenuOpen] = useState(false)
@@ -26,8 +26,6 @@ function App({ children }) {
   }
 
   const handleMenuOpen = () => {
-    console.log('handleMenuOpen')
-
     setMenuOpen(!menuOpen)
     setCartOpen(false)
     setWishlistOpen(false)
@@ -65,4 +63,4 @@ function useAppContext() {
   return context
 }
 
-export { App, useAppContext }
+export { AppProvider, useAppContext }
