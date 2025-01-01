@@ -4,13 +4,13 @@ import ProductPrice from "./ProductPrice"
 import ProductSizes from "./ProductSize"
 
 function ProductOrderBlock() {
-  const { sizes, priceData } = useProductPage()
+  const { product } = useProductPage()
 
   return (
     <div className="space-y-8">
-      <ProductSizes sizes={sizes} />
+      <ProductSizes sizes={product?.sizes} />
       <div className={`flex items-center gap-6`}>
-        <ProductPrice size='xl' data={priceData} />
+        <ProductPrice size='xl' data={product?.price} />
         <CartButton />
       </div>
     </div>

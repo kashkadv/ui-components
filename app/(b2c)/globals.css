@@ -10,7 +10,7 @@
     --greyDark: #2f2f2f;
     --greenDark: #4B654A;
     --green: #6e836e;
-    --greeenLight: #b7c1b6;
+    --greenLight: #b7c1b6;
 --font-size-body: 0.875rem;
 }
 
@@ -37,4 +37,9 @@ body {
 .no-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;
+}
+
+::selection {
+  color: #fff;
+  background: var(--green);
 }

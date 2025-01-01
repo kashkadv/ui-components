@@ -33,7 +33,7 @@ export default function RootLayout({ children }) {
       <CartProvider>
         <WishlistProvider>
           <html lang="en" dir='ltr'>
-            <body className={`${geistSans.variable} ${geistMono.variable} antialiased overflow-x-hidden`}>
+            <body className={`${geistSans.variable} ${geistMono.variable} antialiased overflow-x-hidden cursor-default`}>
               <DesktopNavigation />
 
               <main className="p-6 laptop:p-12 desktop:px-24 max-w-full overflow-x-hidden">

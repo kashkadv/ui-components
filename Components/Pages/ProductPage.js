@@ -4,43 +4,8 @@ import ProductGallery from "@/Components/Product/ProductGallery";
 import ProductInfoAccordion from "@/Components/Product/ProductInfoAccordion";
 import ProductInfoNavigation from "@/Components/Product/ProductInfoNavigation";
 import ProductOrderBlock from "@/Components/Product/ProductOrderBlock";
-import { createContext, useContext, useState } from "react";
+import { act, createContext, use, useContext, useEffect, useState } from "react";
 import { AddToWishlistButton } from "../Wishlist";
-
-// TODO remove mockdata
-const images = [
-  "https://gushka.ua/_next/image?url=https%3A%2F%2Fgushka.1b.app%2Fmedia%2Fshop%2F%2Fee%2F1f%2Fee1f919283297fa421f9a8e849f4b02b.jpg&w=3840&q=75",
-  "https://gushka.ua/_next/image?url=https%3A%2F%2Fgushka.1b.app%2Fmedia%2Fshop%2F%2Fee%2F1f%2Fee1f919283297fa421f9a8e849f4b02b.jpg&w=3840&q=75",
-  "https://gushka.ua/_next/image?url=https%3A%2F%2Fgushka.1b.app%2Fmedia%2Fshop%2F%2Fee%2F1f%2Fee1f919283297fa421f9a8e849f4b02b.jpg&w=3840&q=75",
-];
-
-const product = {
-  id: 1,
-  name: 'Product Name',
-  image: 'https://gushka.ua/_next/image?url=https%3A%2F%2Fgushka.1b.app%2Fmedia%2Fshop%2F%2Fee%2F1f%2Fee1f919283297fa421f9a8e849f4b02b.jpg&w=3840&q=75',
-  price: 100
-}
-
-const sizes = [
-  {
-    label: 'S',
-    availability: true
-  },
-  {
-    label: 'M',
-    availability: false
-  },
-  {
-    label: 'L',
-    availability: false
-  }
-]
-
-const priceData = {
-  regularPrice: '$100'
-}
-
-const tabs = ['Description', 'Care', 'Materials', 'Shipping & Returns']
 
 const info = [
   {
@@ -63,8 +28,13 @@ const info = [
 
 const ProductPageContext = createContext()
 
-function ProductPage() {
-  const [productInfoActiveIndex, setProductInfoActiveIndex] = useState(null);
+function ProductPage({ product, size = null }) {
+  const [productInfoActiveIndex, setProductInfoActiveIndex] = useState(null)
+  const [activeSize, setActiveSize] = useState(product?.sizes?.length > 0 ? product?.sizes[0] : null)
+
+  useEffect(() => {
+    if (size) setActiveSize(product?.sizes?.find((productSize) => productSize.label == size))
+  }, [])
 
   const openAccordionTab = (index, scroll = false) => {
     setProductInfoActiveIndex(index)
@@ -73,11 +43,10 @@ function ProductPage() {
   
   const context = {
     product,
-    images,
-    sizes,
-    priceData,
     info,
     productInfoActiveIndex,
+    setActiveSize,
+    activeSize,
     openAccordionTab,
   }
 
@@ -90,8 +59,8 @@ function ProductPage() {
           </div>
           <div className="flex-1 flex flex-col items-stretch justify-between py-24">
             <div className="flex flex-col gap-3">
-              <div className="flex items-end gap-3 ">
-                <AddToWishlistButton product={product} />
+              <div className="flex items-center gap-3 ">
+                <AddToWishlistButton />
                 <h1 className="text-4xl font-bold leading-none">Product Title</h1>
               </div>
               <div className="text-grey font-medium">SKU: 123456789</div>

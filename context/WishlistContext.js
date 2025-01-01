@@ -25,10 +25,20 @@ function WishlistProvider({ children }) {
     return wishlist.some((wishlistItem) => wishlistItem.id === product.id)
   }
 
-  const handleProductWishlistState = (product) => {
-    isInWishlist(product)
-      ? removeFromWishlist(product)
-      : addToWishlist(product)
+  const isSidInWishlist = (sid) => {
+    if (!wishlist || wishlist.length === 0) return false
+    return wishlist.some((wishlistItem) => wishlistItem.sid === sid)
+  }
+
+  const handleProductWishlistState = (product, size = null) => {
+    const sid = size ? `${product.id}_${size.label}` : product.id
+
+    isSidInWishlist(sid)
+      ? removeFromWishlist(sid)
+      : addToWishlist({
+        ...product,
+        sid
+      })
   }
 
   const addToWishlist = (product) => {
@@ -36,15 +46,17 @@ function WishlistProvider({ children }) {
     setWishlist(newWishlist)
   }
 
-  const removeFromWishlist = (product) => {
-    const newWishlist = wishlist.filter((wishlistItem) => wishlistItem.id !== product.id)
+  const removeFromWishlist = (sid) => {    
+    const newWishlist = wishlist.filter((wishlistItem) => wishlistItem.sid !== sid)
     setWishlist(newWishlist)
   }
 
   const context = {
     wishlist, 
     isInWishlist,
-    handleProductWishlistState
+    isSidInWishlist,
+    handleProductWishlistState,
+    removeFromWishlist
   }
 
   return (

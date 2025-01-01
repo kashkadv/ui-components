@@ -5,7 +5,8 @@ import UseIcon from "../UI/UseIcon";
 import { toggleScrollbar } from "@/helpers";
 
 function ProductGallery() {
-  const { images } = useProductPage()
+  const { product } = useProductPage()
+  const images = product?.images || []
 
   const containerRef = useRef(null); // Ref for scroll container
   const [activeIndex, setActiveIndex] = useState(0); // Track active image index
@@ -98,7 +99,8 @@ function PopupTrigger({ handlePopupState }) {
 }
 
 function GalleryPopup({isOpen, handlePopupState}) {
-  const { images } = useProductPage()
+  const { product } = useProductPage()
+  const images = product?.images || []
 
   useEffect(() => {
     toggleScrollbar(isOpen)

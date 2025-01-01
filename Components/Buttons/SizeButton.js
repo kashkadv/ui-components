@@ -12,4 +12,5 @@ function SizeButton({ data, selected, ...props }) {
     </div>
   )
 }
+
 export default SizeButton
