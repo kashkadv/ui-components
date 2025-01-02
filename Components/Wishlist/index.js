@@ -58,7 +58,7 @@ function WishlistList() {
   const SizeLabel = ({sid}) => {
     if (!sid) return null
     
-    const [_, size] = sid.split('_')
+    const [_, size] = String(sid).split('_')
     if (!size) return null
 
     return <div className="absolute bottom-3 left-12 text-h6 text-grey font-bold">{size}</div>

@@ -3,7 +3,7 @@ import { products } from "@/helpers/mockData"
 
 function page({ params }) {
   const {articul} = params
-  const [id, size] = articul.split('_')
+  const [id, size] = String(articul).split('_')
 
   const product = products.find((product) => product.id === Number(id))
 
