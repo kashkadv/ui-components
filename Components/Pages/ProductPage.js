@@ -60,7 +60,6 @@ function ProductPage({ product, size = null }) {
           <div className="flex-1 flex flex-col items-stretch justify-between py-24">
             <div className="flex flex-col gap-3">
               <div className="flex items-center gap-3 ">
-                <AddToWishlistButton />
                 <h1 className="text-4xl font-bold leading-none">Product Title</h1>
               </div>
               <div className="text-grey font-medium">SKU: 123456789</div>

@@ -22,7 +22,7 @@ export function AddToWishlistButton() {
       <Button onClick={() => handleProductWishlistState(product, activeSize)} >
         <UseIcon id={`${full ? 'heart-full' : 'heart'}`} w="6" className="group-hover:opacity-70 transition-all text-green" />
       </Button>
-      <div className="absolute w-max bg-white py-2 px-4 text-black rounded-xl shadow-xl tracking-widest text-small pointer-events-none opacity-0 group-hover:opacity-100 transition-all">
+      <div className="z-20 absolute w-max bg-white py-2 px-4 text-black rounded-xl shadow-xl tracking-widest text-small pointer-events-none opacity-0 group-hover:opacity-100 transition-all">
         Add product to wishlist
       </div>
     </div>
