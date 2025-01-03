@@ -4,6 +4,10 @@ export const menuItems = [
     href: '/'
   },
   {
+    label: 'Shop',
+    href: '/shop'
+  },
+  {
     label: 'Products',
     href: '/product-cards'
   },
@@ -107,5 +111,38 @@ export const products = [
     price: {
       regularPrice: 200
     },
+  }
+]
+
+const loremDescription = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras maximus pulvinar ante vel euismod. Donec euismod, nulla at hendrerit suscipit, sem nisi pharetra est, non malesuada lectus nulla nec massa. Vivamus nec dictum felis, ut efficitur nisl. Morbi faucibus lectus et justo tristique porta. Sed at mauris urna.'
+
+export const categories = [
+  {
+    id: 1,
+    name: 'Category 1',
+    description: loremDescription,
+    products: products,
+    slug: 'category-1'
+  },
+  {
+    id: 2,
+    name: 'Category 2',
+    description: loremDescription,
+    products: products,
+    slug: 'category-2'
+  },
+  {
+    id: 3,
+    name: 'Category 3',
+    description: loremDescription,
+    products: products,
+    slug: 'category-3'
+  },
+  {
+    id: 4,
+    name: 'Category 4',
+    description: loremDescription,
+    products: products,
+    slug: 'category-4'
   }
 ]
