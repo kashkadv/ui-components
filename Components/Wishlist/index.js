@@ -9,7 +9,7 @@ import { useWishlistContext } from "@/context/WishlistContext";
 import NoContent from "../UI/NoContent";
 import { useProductPage } from "../Pages/ProductPage";
 
-export function AddToWishlistButton() {
+function AddToWishlistButton() {
   const { product, activeSize} = useProductPage()
   const { isSidInWishlist, handleProductWishlistState } = useWishlistContext()
 

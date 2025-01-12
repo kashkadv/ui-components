@@ -1,3 +1,9 @@
+'use client'
+
+import { useAppContext } from "@/context/AppContext"
+
 export default function Home() {
-  return ''
+  const { t } = useAppContext()
+
+  return <div>{t('buttons.buyBtnLabel')}</div>
 }

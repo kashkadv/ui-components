@@ -45,3 +45,20 @@ export function toggleScrollbar(show) {
     root.style.overflow = `hidden`
   }
 }
+
+
+export function mapToObject(map) {
+  const obj = {}
+  map.forEach((value, key) => {
+    obj[key] = value
+  })
+  return obj
+}
+
+export function objectToMap(obj) {
+  const map = new Map()
+  Object.entries(obj).forEach(([key, value]) => {
+    map.set(key, value)
+  })
+  return map
+}

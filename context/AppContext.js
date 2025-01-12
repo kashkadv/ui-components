@@ -1,13 +1,22 @@
 'use client'
 
 import { toggleScrollbar } from "@/helpers"
+import { buildDictionaries } from "@/helpers/dictionaries"
 
-const { useContext, createContext, useState, use, useEffect } = require("react")
+const { useContext, createContext, useState, use, useEffect, useMemo } = require("react")
 
 const AppContext = createContext()
 
-function AppProvider({ children }) {
+function AppProvider({ initialSettings, children }) {
   const [theme, setTheme] = useState('light')
+
+  const dictionaries = useMemo(() => buildDictionaries(initialSettings), [initialSettings])
+  const t = (str) => {
+    const locale = 'en'
+    const [dictionaryName, key] = str.split('.')
+    
+    return dictionaries?.[dictionaryName][key][locale] || 'Translation is not defined'
+  }
 
   const [menuOpen, setMenuOpen] = useState(false)
   const [cartOpen, setCartOpen] = useState(false)
@@ -43,7 +52,8 @@ function AppProvider({ children }) {
     handleMenuOpen,
     menuOpen,
     handleWishlistOpen,
-    wishlistOpen
+    wishlistOpen,
+    t
   }
 
   return (

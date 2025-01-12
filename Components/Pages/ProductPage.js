@@ -4,8 +4,7 @@ import ProductGallery from "@/Components/Product/ProductGallery";
 import ProductInfoAccordion from "@/Components/Product/ProductInfoAccordion";
 import ProductInfoNavigation from "@/Components/Product/ProductInfoNavigation";
 import ProductOrderBlock from "@/Components/Product/ProductOrderBlock";
-import { act, createContext, use, useContext, useEffect, useState } from "react";
-import { AddToWishlistButton } from "../Wishlist";
+import { createContext, useContext, useEffect, useState } from "react";
 
 const info = [
   {
