@@ -27,11 +27,13 @@ function DefaultCard() {
 
   return (
     <Link href={`/product/${product.slug}`} className="relative bg-white p-12 pb-6 group">
-      <div className="relative w-full overflow-hidden aspect-[3/4] shadow-xl group-hover:shadow-none transition-all duration-500">
+      <div className="relative  w-full overflow-hidden aspect-[3/4] shadow-xl group-hover:shadow-none transition-all duration-500">
+        <div className="absolute w-full h-full bg-greyLight animate-pulse"></div>
         <Image className="scale-[103%] object-cover" fill src={product.image} alt={product.title?.[0]?.value || 'alt'} />
       </div>      
       <div className="flex items-end justify-between w-full ">
         {/* <ProductCardSizes /> */}
+        <div></div>
         <div className="flex flex-col gap-1 text-right">
           <div className="pt-6 flex-shrink-0 w-max text-right font-semibold text-body">{product.title?.[0]?.value}</div>
           {/* <div className="font-semibold text-grey leading-none"><ProductPrice data={product.price} /></div> */}
