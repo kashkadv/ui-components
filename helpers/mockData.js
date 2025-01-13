@@ -8,8 +8,8 @@ export const menuItems = [
     href: '/shop'
   },
   {
-    label: 'Products',
-    href: '/product-cards'
+    label: 'Collections',
+    href: '/collections'
   },
   {
     label: 'Contacts',

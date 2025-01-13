@@ -1,5 +1,5 @@
 
-import { Geist, Geist_Mono } from "next/font/google";
+import { Lora, Sofia_Sans } from "next/font/google";
 import "./globals.css";
 import DesktopNavigation from "@/Components/Navigation/DesktopNavigation";
 import { AppProvider } from "@/context/AppContext";
@@ -14,14 +14,16 @@ import { WishlistProvider } from "@/context/WishlistContext";
 import { fetchSanity } from "@/sanity/fetch";
 import { checkIfDictionariesNeedUpdate } from "@/helpers/dictionaries";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+const lora = Lora({
+  variable: "--font-secondary",
+  subsets: ["cyrillic-ext"],
+  weight: ["400", "500", "600", "700"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+const sofiaSans = Sofia_Sans({
+  variable: "--font-primary",
+  subsets: ["cyrillic-ext"],
+  weight: ["200", "300", "400", "500", "600", "700", "800", "900"],
 });
 
 export const metadata = {
@@ -43,7 +45,7 @@ export default async function RootLayout({ children }) {
       <CartProvider>
         <WishlistProvider>
           <html lang="en" dir='ltr'>
-            <body className={`${geistSans.variable} ${geistMono.variable} antialiased overflow-x-hidden cursor-default`}>
+            <body className={`${lora.variable} ${sofiaSans.variable} antialiased overflow-x-hidden cursor-default`}>
               <DesktopNavigation />
 
               <main className="p-6 laptop:p-12 desktop:px-24 max-w-full overflow-x-hidden">

@@ -25,7 +25,7 @@ function ProductInfoAccordion() {
       <div className="col-span-1 ">
         {content.map((tab, index) => (
           <div id={`accordion-tab-${index}`} key={index} className={`transition-all  text-h5 ${activeTab === index && 'shadow-xl'}`}>  
-            <DefaultButton type="iconEnd" onClick={() => handleToggle(index)} className={`text-small uppercase tracking-widest font-black transition-all border-b border-b-greyLight w-full px-6 py-5 ${activeTab === index && 'bg-white'}`}>
+            <DefaultButton type="iconEnd" onClick={() => handleToggle(index)} className={`text-body font-medium tracking-widest transition-all border-b border-b-greyLight w-full px-6 py-5 ${activeTab === index && 'bg-white'}`}>
               {tab.label}
               <UseIcon id="plus" w="5" className={`text-greyDark transition-all ${activeTab === index && 'rotate-45'}`} />
             </DefaultButton>

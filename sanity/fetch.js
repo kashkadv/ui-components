@@ -1,14 +1,17 @@
 'use server'
 
 import { client } from "./client"
-import { getSettingsQuery } from "./queries"
+import { getAllCategoriesQuery, getSettingsQuery, getCategoryBySlugQuery, getCategoryProductsQuery } from "./queries"
 
 // q: query, c: config
 const requestConfigs = new Map([
-  ["settings", {query: getSettingsQuery, config: { cache: "force-cache", next: { revalidate: false, tags: ["settings"] }}}]
+  ["settings", {query: getSettingsQuery, config: { cache: "no-store", next: { tags: ["settings"] }}}],
+  ["categories", {query: getAllCategoriesQuery, config: { cache: "no-store", next: { tags: ["categories"] }}}],
+  ["category-by-slug", {query: getCategoryBySlugQuery, config: { cache: "force-cache", next: { revalidate: false, tags: ["categories"] }}}],
+  ["category-products", {query: getCategoryProductsQuery, config: { filterResponse: true, cache: "force-cache", next: { revalidate: false, tags: ["category-products"] }}}]
 ])
 
-export async function fetchSanity(key, data) {
+export async function fetchSanity(key, params = {}) {
   const { query, config } = requestConfigs.get(key)
 
   if (!query) {
@@ -17,7 +20,7 @@ export async function fetchSanity(key, data) {
   }
 
   try {
-    const res = await client.fetch(query, config || {}, config || {})
+    const res = await client.fetch(query, params, config || {})
     return res
 
   } catch (error) {

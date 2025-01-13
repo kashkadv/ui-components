@@ -62,7 +62,7 @@ function ProductPage({ product, size = null }) {
                 <h1 className="text-4xl font-bold leading-none">Product Title</h1>
               </div>
               <div className="text-grey font-medium">SKU: 123456789</div>
-              <p className="w-3/4 min-w-[300px] opacity-90">Donec eget mi auctor, ultricies eros a, semper magna. Curabitur in semper risus. Proin a auctor dolor. Nunc luctus elit diam, et malesuada ligula faucibus dignissim. Maecenas eu elit eu erat elementum euismod. Nullam leo velit, lacinia ac lacus sit amet, convallis rutrum est.</p>
+              <p className="w-full min-w-[300px] opacity-90 font-secondary text-grey">Donec eget mi auctor, ultricies eros a, semper magna. Curabitur in semper risus. Proin a auctor dolor. Nunc luctus elit diam, et malesuada ligula faucibus dignissim. Maecenas eu elit eu erat elementum euismod. Nullam leo velit, lacinia ac lacus sit amet, convallis rutrum est.</p>
             </div>
             <ProductOrderBlock />
             <ProductInfoNavigation />

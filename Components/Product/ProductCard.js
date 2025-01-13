@@ -26,15 +26,15 @@ function DefaultCard() {
   const {product} = useContext(ProductContext)
 
   return (
-    <Link href={`/product/${product.id}`} className="relative bg-white p-12 pb-6 group">
+    <Link href={`/product/${product.slug}`} className="relative bg-white p-12 pb-6 group">
       <div className="relative w-full overflow-hidden aspect-[3/4] shadow-xl group-hover:shadow-none transition-all duration-500">
-        <Image className="scale-[103%]" fill src={product.images[0]} alt={product.name} />
+        <Image className="scale-[103%] object-cover" fill src={product.image} alt={product.title?.[0]?.value || 'alt'} />
       </div>      
       <div className="flex items-end justify-between w-full ">
-        <ProductCardSizes />
+        {/* <ProductCardSizes /> */}
         <div className="flex flex-col gap-1 text-right">
-          <div className="pt-6 flex-shrink-0 w-max text-right font-semibold text-body">{product.name}</div>
-          <div className="font-semibold text-grey leading-none"><ProductPrice data={product.price} /></div>
+          <div className="pt-6 flex-shrink-0 w-max text-right font-semibold text-body">{product.title?.[0]?.value}</div>
+          {/* <div className="font-semibold text-grey leading-none"><ProductPrice data={product.price} /></div> */}
         </div>
       </div>
     </Link>

@@ -1,11 +1,18 @@
 import CategoryPage from "@/Components/Pages/CategoryPage"
-import { categories, products } from "@/helpers/mockData"
+import { fetchSanity } from "@/sanity/fetch"
 
-function Page({ params }) {
+async function Page({ params }) {
   const { slug } = params
 
-  const category = categories.find((category) => category.slug === slug)
+  const category = await fetchSanity('category-by-slug', { slug })
 
-  return <CategoryPage category={ category } />
+  if (!category) return null
+
+  const products = await fetchSanity('category-products', { category: category._id })
+
+  console.log('category', category)
+  console.log('products', products)
+
+  return <CategoryPage category={ category } products={products} />
 }
 export default Page

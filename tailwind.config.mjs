@@ -16,6 +16,11 @@ export default {
         'desktop': '1400px',
       },
 
+      fontFamily: {
+        primary: ['var(--font-primary)'],
+        secondary: ['var(--font-secondary)'],
+      },
+
       colors: {
         transparent: "rgba(0,0,0,0)",
         background: "var(--background)",
@@ -35,7 +40,7 @@ export default {
         'h4': ['1.5rem', { lineHeight: '1.5' }], // 24px
         'h5': ['1.25rem', { lineHeight: '1.6' }], // 20px
         'h6': ['1rem', { lineHeight: '1.75' }],  // 16px
-        'body': ['0.875rem', { lineHeight: '1.6' }],  // Paragraph size
+        'body': ['1.25rem', { lineHeight: '1.6' }],  // Paragraph size
         'small': ['0.7rem', {lineHeight: '1'}]
       },
 
