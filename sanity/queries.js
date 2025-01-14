@@ -3,7 +3,7 @@ export const getSettingsQuery = `*[_type == "intl"][0]`
 
 // Categories
 export const getAllCategoriesQuery = `
-  *[_type == "category" && slug.current != null] {
+  *[_type == "category" && slug.current != null && !(_id in path('drafts.**'))] {
     title,
     description,
     "slug": slug.current,
@@ -19,7 +19,7 @@ export const getAllCategoriesQuery = `
 `
 // export const getActiveCategoriesQuery = ''
 export const getCategoryBySlugQuery = `
-  *[_type == "category" && slug.current == $slug && published][0] {
+  *[_type == "category" && slug.current == $slug && published && !(_id in path('drafts.**'))][0] {
     _id,
     title,
     productTitle,
@@ -29,7 +29,7 @@ export const getCategoryBySlugQuery = `
 
 // Products
 export const getCategoryProductsQuery = `
-  *[_type == "product" && category._ref == $category && published == true] | order(articul desc) {
+  *[_type == "product" && category._ref == $category  && !(_id in path('drafts.**')) && published == true] | order(articul desc) {
     title,
     slug,
     image,

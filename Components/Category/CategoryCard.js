@@ -26,7 +26,7 @@ function CategoryCard({category, last, baseUrl }) {
         </div>
       </div>
       <div className={imageClassNames}>
-        <Link href={href} className="h-full block relative aspect-square max-h-[calc(100dvh_*_0.6)] ml-auto p-12 bg-white">
+        <Link href={href} className="h-full block relative aspect-square max-h-[calc(100dvh_*_0.6)] ltr:ml-auto rtl:mr-auto p-12 bg-white">
           <div className="relative w-full h-full shadow-xl hover:shadow-none transition-all duration-500 overflow-hidden">
             <ImagePlaceholder />
             <Image src={src} blurDataURL={blurDataURL} alt={title} fill className="scale-[100.5%] hover:scale-[105%] w-full h-full object-cover transition-all duration-1000" />

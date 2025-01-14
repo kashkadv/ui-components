@@ -11,9 +11,11 @@
   "dependencies": {
     "@sanity/client": "^6.24.3",
     "next": "^15.2.0-canary.5",
+    "next-intl": "^3.26.3",
     "next-sanity-client": "^1.0.8",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "rtl-detect": "^1.1.2"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
