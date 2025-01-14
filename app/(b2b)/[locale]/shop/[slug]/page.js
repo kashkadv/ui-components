@@ -3,7 +3,6 @@ import { fetchSanity } from "@/sanity/fetch"
 
 async function Page({ params }) {
   const { slug } = await params
-  console.log('slug', slug)
 
   const category = await fetchSanity('category-by-slug', { slug })
 

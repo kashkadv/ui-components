@@ -14,6 +14,10 @@ import { WishlistProvider } from "@/context/WishlistContext";
 import { fetchSanity } from "@/sanity/fetch";
 import { getLangDir } from "rtl-detect";
 
+
+import { cookies, headers } from 'next/headers'
+import { getDicitionaries } from "@/helpers/dictionaries";
+
 const lora = Lora({
   variable: "--font-secondary",
   subsets: ["cyrillic-ext"],
@@ -37,7 +41,10 @@ export default async function RootLayout({ params, children }) {
   const { locale } = await params
   const direction = getLangDir(locale)
 
-  console.log('direction', direction)
+  const headersList = await headers()
+  const scenario = headersList.get('scenario')
+
+  const dictionaries = await getDicitionaries()
 
   return (
     <AppProvider initialSettings={settings} locale={locale} >
@@ -48,6 +55,8 @@ export default async function RootLayout({ params, children }) {
             <body className={`${lora.variable} ${sofiaSans.variable} antialiased  cursor-default`}>
 
               <DesktopNavigation />
+
+              {scenario && scenario}
 
               <main className="p-6 laptop:p-12 desktop:px-24 max-w-full ">
                 {children}

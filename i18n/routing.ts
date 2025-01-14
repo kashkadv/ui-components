@@ -14,10 +14,7 @@ export const routing = defineRouting({
     {
       domain: 'world.localhost:3000',
       defaultLocale: 'en',
-    },
-    {
-      domain: 'asia.localhost:3000',
-      defaultLocale: 'ar',
+      locales: ['en', 'ar']
     }
   ],
 });

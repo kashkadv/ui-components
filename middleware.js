@@ -1,9 +1,15 @@
 import createMiddleware from 'next-intl/middleware';
-import {routing} from './i18n/routing';
- 
-export default createMiddleware(routing);
+import { routing } from './i18n/routing';
+
+export default async function middleware(request) {
+  const { geo, nextUrl } = request
+
+  const response = createMiddleware(routing)
+  request.headers.set('scenario', 'local')
+
+  return response(request)
+}
  
 export const config = {
-  // Match only internationalized pathnames
   matcher: ['/((?!api|_next|_vercel|.*\\..*|favicon.ico).*)']
 };

@@ -10,14 +10,6 @@ const AppContext = createContext()
 function AppProvider({ initialSettings, children }) {
   const [theme, setTheme] = useState('light')
 
-  const dictionaries = useMemo(() => buildDictionaries(initialSettings), [initialSettings])
-  const t = (str) => {
-    const locale = 'en'
-    const [dictionaryName, key] = str.split('.')
-    
-    return dictionaries?.[dictionaryName][key][locale] || 'Translation is not defined'
-  }
-
   const [menuOpen, setMenuOpen] = useState(false)
   const [cartOpen, setCartOpen] = useState(false)
   const [wishlistOpen, setWishlistOpen] = useState(false)
@@ -52,8 +44,7 @@ function AppProvider({ initialSettings, children }) {
     handleMenuOpen,
     menuOpen,
     handleWishlistOpen,
-    wishlistOpen,
-    t
+    wishlistOpen
   }
 
   return (

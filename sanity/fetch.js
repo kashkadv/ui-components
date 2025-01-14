@@ -5,7 +5,7 @@ import { getAllCategoriesQuery, getSettingsQuery, getCategoryBySlugQuery, getCat
 
 // q: query, c: config
 const requestConfigs = new Map([
-  ["settings", {query: getSettingsQuery, config: { cache: "no-store", next: { tags: ["settings"] }}}],
+  ["settings", {query: getSettingsQuery, config: { cache: "force-cache", next: { tags: ["settings"] }}}],
   ["categories", {query: getAllCategoriesQuery, config: { cache: "no-store", next: { tags: ["categories"] }}}],
   ["category-by-slug", {query: getCategoryBySlugQuery, config: { cache: "force-cache", next: { revalidate: false, tags: ["categories"] }}}],
   ["category-products", {query: getCategoryProductsQuery, config: { filterResponse: true, cache: "force-cache", next: { revalidate: false, tags: ["category-products"] }}}]

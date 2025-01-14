@@ -15,7 +15,13 @@ const nextConfig = {
         hostname: "**",
       },
     ],
-  }
+  },
+  logging: {
+    fetches: {
+      fullUrl: true,
+      hmrRefreshes: true,
+    },
+  },
 };
 
 
