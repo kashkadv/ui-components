@@ -1,6 +1,7 @@
 import Image from "next/image"
 import Link from "next/link"
 import UseIcon from "../UI/UseIcon"
+import ImagePlaceholder from "../UI/ImagePlaceholder"
 
 const imageClassNames = `order-1 laptop:order-2 laptop:col-span-1`
 const infoClassNames = `order-2 laptop:order-1 laptop:grid laptop:gap-6 desktop:grid-cols-3 laptop:col-span-1 flex-col gap-6 flex items-start h-fit` 
@@ -25,8 +26,11 @@ function CategoryCard({category, last, baseUrl }) {
         </div>
       </div>
       <div className={imageClassNames}>
-        <Link href={href} className="h-full block relative aspect-square max-h-[calc(100dvh_*_0.6)] ml-auto">
-          <Image src={src} blurDataURL={blurDataURL} alt={title} fill className="w-full h-full object-cover" />
+        <Link href={href} className="h-full block relative aspect-square max-h-[calc(100dvh_*_0.6)] ml-auto p-12 bg-white">
+          <div className="relative w-full h-full shadow-xl hover:shadow-none transition-all duration-500 overflow-hidden">
+            <ImagePlaceholder />
+            <Image src={src} blurDataURL={blurDataURL} alt={title} fill className="scale-[100.5%] hover:scale-[105%] w-full h-full object-cover transition-all duration-1000" />
+          </div>
         </Link>
       </div>
     </div>

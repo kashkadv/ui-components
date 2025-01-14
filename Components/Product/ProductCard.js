@@ -4,6 +4,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { createContext, useContext } from "react"
 import ProductPrice from "./ProductPrice"
+import ImagePlaceholder from "../UI/ImagePlaceholder"
 
 const ProductContext = createContext()
 
@@ -28,7 +29,7 @@ function DefaultCard() {
   return (
     <Link href={`/product/${product.slug}`} className="relative bg-white p-12 pb-6 group">
       <div className="relative  w-full overflow-hidden aspect-[3/4] shadow-xl group-hover:shadow-none transition-all duration-500">
-        <div className="absolute w-full h-full bg-greyLight animate-pulse"></div>
+        <ImagePlaceholder />
         <Image className="scale-[103%] object-cover" fill src={product.image} alt={product.title?.[0]?.value || 'alt'} />
       </div>      
       <div className="flex items-end justify-between w-full ">
