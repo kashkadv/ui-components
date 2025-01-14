@@ -5,8 +5,18 @@ const withNextIntl = createNextIntlPlugin();
 
 const nextConfig = {
   images: {
-    domains: ['gushka.ua', 'cdn.sanity.io', 'gushka.1b.app'],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "**",
+      },
+      {
+        protocol: "http",
+        hostname: "**",
+      },
+    ],
   }
 };
+
 
 export default withNextIntl(nextConfig);

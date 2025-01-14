@@ -6,13 +6,7 @@ export default getRequestConfig(async ({ requestLocale }) => {
 
   if (!locale || !routing.locales.includes(locale as any)) locale = routing.defaultLocale
 
-  const response = await fetch('http://localhost:3000/api/test-json')
-  const messages = await response.json()
-
-  return {
-    locale,
-    messages
-  };
+  return { locale };
 });
 
 

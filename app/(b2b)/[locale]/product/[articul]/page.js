@@ -1,11 +1,17 @@
 import ProductPage from "@/Components/Pages/ProductPage"
 import { products } from "@/helpers/mockData"
+import { notFound } from "next/navigation"
 
-function page({ params }) {
-  const {articul} = params
+async function page({ params }) {
+  const {articul} = await params
+
   const [id, size] = String(articul).split('_')
 
-  const product = products.find((product) => product.id === Number(id))
+  if (!id) notFound()
+
+  const product = products.find((product) => product.id == id)
+
+  if (!product) notFound()
 
   return <ProductPage product={product} size={size || null} />
 }

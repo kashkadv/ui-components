@@ -4,6 +4,7 @@ import ProductGallery from "@/Components/Product/ProductGallery";
 import ProductInfoAccordion from "@/Components/Product/ProductInfoAccordion";
 import ProductInfoNavigation from "@/Components/Product/ProductInfoNavigation";
 import ProductOrderBlock from "@/Components/Product/ProductOrderBlock";
+import useTranslator from "@/i18n/translator";
 import { createContext, useContext, useEffect, useState } from "react";
 
 const info = [

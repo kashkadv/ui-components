@@ -23,7 +23,7 @@ export const menuItems = [
 
 export const products = [
   {
-    id: 1,
+    id: '00013324',
     name: 'Product Name 1',
     images: [
       "https://gushka.ua/_next/image?url=https%3A%2F%2Fgushka.1b.app%2Fmedia%2Fshop%2F%2Fee%2F1f%2Fee1f919283297fa421f9a8e849f4b02b.jpg&w=3840&q=75",

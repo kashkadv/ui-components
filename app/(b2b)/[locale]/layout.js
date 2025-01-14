@@ -37,15 +37,19 @@ export default async function RootLayout({ params, children }) {
   const { locale } = await params
   const direction = getLangDir(locale)
 
+  console.log('direction', direction)
+
   return (
     <AppProvider initialSettings={settings} locale={locale} >
       <CartProvider>
         <WishlistProvider>
           <html lang={locale} dir={direction}>
-            <body className={`${lora.variable} ${sofiaSans.variable} antialiased overflow-x-hidden cursor-default`}>
+            <head></head>
+            <body className={`${lora.variable} ${sofiaSans.variable} antialiased  cursor-default`}>
+
               <DesktopNavigation />
 
-              <main className="p-6 laptop:p-12 desktop:px-24 max-w-full overflow-x-hidden">
+              <main className="p-6 laptop:p-12 desktop:px-24 max-w-full ">
                 {children}
               </main>
               
