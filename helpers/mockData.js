@@ -44,9 +44,7 @@ export const products = [
         availability: false
       }
     ],
-    price: {
-      regularPrice: 200
-    },
+    base_price: 200,
   },
   {
     id: 2,

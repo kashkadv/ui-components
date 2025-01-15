@@ -5,16 +5,15 @@ import ProductPrice from "./ProductPrice"
 import ProductSizes from "./ProductSize"
 
 function ProductOrderBlock() {
-  const { product } = useProductPage()
+  const { product, activeSize } = useProductPage()
 
   return (
-    <div className="space-y-8">
-      <ProductSizes sizes={product?.sizes} />
-      <div className={`flex items-center gap-6`}>
-        <AddToWishlistButton />
-        <ProductPrice size='xl' data={product?.price} />
+    <div className="space-y-12">
+      <div className={`flex items-center gap-4`}>
+        <ProductPrice size='xl' price={Number(product?.base_price) + Number(activeSize?.additional_price || 0)} />
         <CartButton />
       </div>
+      <ProductSizes sizes={product?.sizes} />
     </div>
   )
 }

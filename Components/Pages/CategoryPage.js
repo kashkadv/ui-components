@@ -8,7 +8,7 @@ function CategoryPage({ category, products }) {
   return (
     <div className="space-y-12">
       <CategoryBanner category={category} />
-      <ProductGrid products={products} />
+      <ProductGrid products={products} category={category} />
     </div>
   )
 }

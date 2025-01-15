@@ -41,7 +41,8 @@ export default {
         'h5': ['1.25rem', { lineHeight: '1.6' }], // 20px
         'h6': ['1rem', { lineHeight: '1.75' }],  // 16px
         'body': ['1.25rem', { lineHeight: '1.6' }],  // Paragraph size
-        'small': ['0.7rem', {lineHeight: '1'}]
+        'small': ['0.9rem', {lineHeight: '1'}],
+        'extra-small': ['0.7rem', {lineHeight: '1'}]
       },
 
       animation: {

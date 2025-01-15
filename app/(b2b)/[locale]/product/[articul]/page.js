@@ -1,5 +1,6 @@
 import ProductPage from "@/Components/Pages/ProductPage"
 import { products } from "@/helpers/mockData"
+import { fetchSanity } from "@/sanity/fetch"
 import { notFound } from "next/navigation"
 
 async function page({ params }) {
@@ -9,7 +10,7 @@ async function page({ params }) {
 
   if (!id) notFound()
 
-  const product = products.find((product) => product.id == id)
+  const product = await fetchSanity('product-by-slug', { slug: id })
 
   if (!product) notFound()
 

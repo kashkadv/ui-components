@@ -7,12 +7,37 @@ const { useContext, createContext, useState, use, useEffect, useMemo } = require
 
 const AppContext = createContext()
 
-function AppProvider({ initialSettings, children }) {
+function AppProvider({ initialSettings, scenario, locale, children }) {
   const [theme, setTheme] = useState('light')
 
   const [menuOpen, setMenuOpen] = useState(false)
   const [cartOpen, setCartOpen] = useState(false)
   const [wishlistOpen, setWishlistOpen] = useState(false)
+
+  const [currency, setCurrency] = useState(null)
+
+  useEffect(() => {
+    let storedCurrency = localStorage.getItem('currency')
+    if (storedCurrency) setCurrency(storedCurrency)
+
+    if (!storedCurrency) {
+      const localCurrency = {
+        symbol: '₴',
+        position: 'before',
+        rate: 1,
+        multiplier: 1
+      }
+
+      const worldCurrency = {
+        symbol: '$',
+        position: 'before',
+        rate: 1,
+        multiplier: 2
+      }
+      
+      setCurrency(scenario === 'world' ? worldCurrency : localCurrency)
+    }
+  }, [locale])
 
   useEffect(() => {
     (!menuOpen && !cartOpen && !wishlistOpen)
@@ -44,7 +69,10 @@ function AppProvider({ initialSettings, children }) {
     handleMenuOpen,
     menuOpen,
     handleWishlistOpen,
-    wishlistOpen
+    wishlistOpen,
+    locale,
+    scenario,
+    currency
   }
 
   return (
@@ -57,9 +85,7 @@ function AppProvider({ initialSettings, children }) {
 function useAppContext() {
   const context = useContext(AppContext)
 
-  if (!context) {
-    throw new Error('useAppContext must be used within a AppContextProvider')
-  }
+  if (!context) throw new Error('useAppContext must be used within a AppContextProvider')
 
   return context
 }

@@ -4,8 +4,8 @@ import ProductGallery from "@/Components/Product/ProductGallery";
 import ProductInfoAccordion from "@/Components/Product/ProductInfoAccordion";
 import ProductInfoNavigation from "@/Components/Product/ProductInfoNavigation";
 import ProductOrderBlock from "@/Components/Product/ProductOrderBlock";
-import useTranslator from "@/i18n/translator";
 import { createContext, useContext, useEffect, useState } from "react";
+import { AddToWishlistButton } from "../Wishlist";
 
 const info = [
   {
@@ -39,7 +39,7 @@ function ProductPage({ product, size = null }) {
   const openAccordionTab = (index, scroll = false) => {
     setProductInfoActiveIndex(index)
     scroll && document.getElementById(`accordion-tab-${index}`)?.scrollIntoView({ behavior: "smooth" })
-  };
+  }
   
   const context = {
     product,
@@ -60,10 +60,11 @@ function ProductPage({ product, size = null }) {
           <div className="flex-1 flex flex-col items-stretch justify-between py-24">
             <div className="flex flex-col gap-3">
               <div className="flex items-center gap-3 ">
-                <h1 className="text-4xl font-bold leading-none">Product Title</h1>
+                <AddToWishlistButton />
+                <h1 className="text-4xl font-bold leading-none font-secondary">Product Title</h1>
               </div>
-              <div className="text-grey font-medium">SKU: 123456789</div>
-              <p className="w-full min-w-[300px] opacity-90 font-secondary text-grey">Donec eget mi auctor, ultricies eros a, semper magna. Curabitur in semper risus. Proin a auctor dolor. Nunc luctus elit diam, et malesuada ligula faucibus dignissim. Maecenas eu elit eu erat elementum euismod. Nullam leo velit, lacinia ac lacus sit amet, convallis rutrum est.</p>
+              <div className="text-grey text-small mb-4">SKU: 123456789</div>
+              <p className="w-full min-w-[300px] opacity-90 text-grey">Donec eget mi auctor, ultricies eros a, semper magna. Curabitur in semper risus. Proin a auctor dolor. Nunc luctus elit diam, et malesuada ligula faucibus dignissim. Maecenas eu elit eu erat elementum euismod. Nullam leo velit, lacinia ac lacus sit amet, convallis rutrum est.</p>
             </div>
             <ProductOrderBlock />
             <ProductInfoNavigation />

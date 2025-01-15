@@ -5,10 +5,15 @@ import Link from "next/link"
 import { createContext, useContext } from "react"
 import ProductPrice from "./ProductPrice"
 import ImagePlaceholder from "../UI/ImagePlaceholder"
+import { getLocalizedString } from "@/helpers/localization"
+import { useAppContext } from "@/context/AppContext"
+import { buildSize } from "@/helpers"
 
 const ProductContext = createContext()
 
-function ProductCard({ product, type = 'default' }) {
+function ProductCard({ product, category = null, type = 'default' }) {
+  const { locale } = useAppContext()
+
   const typeComponents = {
     'default': DefaultCard,
     'defaultShort': DefaultCardShort,
@@ -17,27 +22,29 @@ function ProductCard({ product, type = 'default' }) {
   const Component = typeComponents[type]
 
   return (
-    <ProductContext.Provider value={{ product }}>
+    <ProductContext.Provider value={{ product, category, locale }}>
       <Component />
     </ProductContext.Provider>
   )
 }
 
 function DefaultCard() {
-  const {product} = useContext(ProductContext)
+  const {product, category, locale} = useContext(ProductContext)
+  
+  const title = product.title || category.product_title
 
   return (
-    <Link href={`/product/${product.slug}`} className="relative bg-white p-12 pb-6 group">
-      <div className="relative  w-full overflow-hidden aspect-[3/4] shadow-xl group-hover:shadow-none transition-all duration-500">
+    <Link href={`/product/${product.slug}`} className="relative bg-white p-12 pb-6 group h-fit">
+      <div className="relative w-full overflow-hidden aspect-[3/4] shadow-xl group-hover:shadow-none transition-all duration-500">
         <ImagePlaceholder />
-        <Image className="scale-[103%] object-cover" fill src={product.image} alt={product.title?.[0]?.value || 'alt'} />
+        <Image className="scale-[103%] object-cover" fill src={product.image} alt={getLocalizedString(locale, title) || 'alt'} />
       </div>      
       <div className="flex items-end justify-between w-full ">
-        {/* <ProductCardSizes /> */}
+        <ProductCardSizes />
         <div></div>
-        <div className="flex flex-col gap-1 text-right">
-          <div className="pt-6 flex-shrink-0 w-max text-right font-semibold text-body">{product.title?.[0]?.value}</div>
-          {/* <div className="font-semibold text-grey leading-none"><ProductPrice data={product.price} /></div> */}
+        <div className="flex flex-col gap-1 text-right items-end">
+          <div className="pt-6 flex-shrink-0 w-max text-right font-semibold text-body">{getLocalizedString(locale, title)}</div>
+          <div className="font-semibold text-grey leading-none"><ProductPrice price={product.base_price} /></div>
         </div>
       </div>
     </Link>
@@ -68,7 +75,7 @@ function ListCard() {
         <ProductCardSizes />
         <div className="flex flex-col gap-1 text-right">
           <div className="pt-6 flex-shrink-0 w-max text-right font-semibold text-body">{product.name}</div>
-          <div className="font-semibold text-grey leading-none"><ProductPrice data={product.price} /></div>
+          <div className="font-semibold text-grey leading-none"><ProductPrice price={product.base_price} /></div>
         </div>
       </div>
     </Link>
@@ -76,8 +83,12 @@ function ListCard() {
 }
 
 function ProductCardSizes() {
-  const {product} = useContext(ProductContext)
-  const sizes = product.sizes || []
+  const {product, locale} = useContext(ProductContext)
+  let sizes = product.sizes || []
+
+  if (sizes.length > 0) {
+    sizes = sizes.map((size) => buildSize(product,size))
+  }
 
   return (
     <div className="flex flex-wrap gap-2 text-right text-small font-bold max-w-[80%]">

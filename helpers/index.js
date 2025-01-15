@@ -62,3 +62,29 @@ export function objectToMap(obj) {
   })
   return map
 }
+
+export function formatPrice(price) {
+  let priceStr = price.toString();  
+  let formattedPrice = priceStr.replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+
+  return formattedPrice;
+}
+
+export function buildSize(product, data) {
+  let label = data.name
+  let key =  data._key
+
+  if (data._key.endsWith('см')) {
+    label = label.replace('см', '')
+    const [w, h] = label.split('x')
+
+    label = `${w} x ${h} см`
+  }
+
+  return {
+    label,
+    key,
+    availability: data.stock > 0,
+    price: product.base_price + data.additional_price
+  }
+}

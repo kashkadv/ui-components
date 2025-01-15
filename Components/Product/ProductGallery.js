@@ -6,7 +6,7 @@ import { toggleScrollbar } from "@/helpers";
 
 function ProductGallery() {
   const { product } = useProductPage()
-  const images = product?.images || []
+  const images = product?.gallery || []
 
   const containerRef = useRef(null); // Ref for scroll container
   const [activeIndex, setActiveIndex] = useState(0); // Track active image index
@@ -52,34 +52,33 @@ function ProductGallery() {
   };
 
   return (
-    <div className="relative flex items-center justify-center w-full bg-white/90  h-full shadow-xl">
-      <div ref={containerRef} onClick={handlePopupState} className="cursor-pointer h-[calc(100%-200px)] w-[calc(100%-200px)] overflow-y-scroll no-scrollbar relative">
+    <div className="relative flex items-center justify-center w-full bg-white/90 px-12 pt-12 pb-24  h-full shadow-xl">
+      <div ref={containerRef} onClick={handlePopupState} className="cursor-pointer w-full h-full overflow-y-scroll no-scrollbar relative">
         {images.map((src, index) => (
           <div key={index} data-index={index} className="image-item aspect-[3/4] relative">
             <Image src={src} alt={`Image ${index + 1}`} fill />
           </div>
         ))}
-
       </div>
 
-      <div className="absolute left-1/2 bottom-0 flex items-center justify-between -translate-x-1/2 z-10 w-full h-[100px] px-[100px]">
-
-        <div className="flex items-center gap-2 font-semibold text-grey">
-          <div className="text-greyDark">{activeIndex + 1}</div>
-          <div className="w-[1px] bg-greyLight h-[20px] "></div>
-          <div className="text-greyLight">{images.length}</div>
+      <div className="absolute left-1/2 bottom-0 flex items-center justify-between -translate-x-1/2 z-10 w-full h-24 px-12">
+        <div className="flex gap-4">
+          <PopupTrigger handlePopupState={handlePopupState} />
+          <div className="flex items-center gap-2 font-semibold text-grey text-small">
+            <div className="text-greyDark">{activeIndex + 1}</div>
+            <div className="w-[1px] bg-greyLight h-[20px] "></div>
+            <div className="text-greyLight">{images.length}</div>
+          </div>
         </div>
-
-        <PopupTrigger handlePopupState={handlePopupState} />
         
         <div className="flex items-center gap-2">
           {images.map((_, index) => (
             <button
-            key={index}
-            onClick={() => scrollToImage(index)}
-            className={`w-2 h-2 flex transition-all rounded-full bg-grey border-grey ${
-              activeIndex === index ? "bg-greyDark !w-3 !h-3" : "opacity-10"
-            }`}
+              key={index}
+              onClick={() => scrollToImage(index)}
+              className={`w-2 h-2 flex transition-all rounded-full bg-grey border-grey ${
+                activeIndex === index ? "bg-greyDark !w-3 !h-3" : "opacity-10"
+              }`}
             ></button>
           ))}
         </div>
@@ -100,7 +99,7 @@ function PopupTrigger({ handlePopupState }) {
 
 function GalleryPopup({isOpen, handlePopupState}) {
   const { product } = useProductPage()
-  const images = product?.images || []
+  const images = product?.gallery || []
 
   useEffect(() => {
     toggleScrollbar(isOpen)
@@ -123,7 +122,7 @@ function GalleryPopup({isOpen, handlePopupState}) {
         >
           <UseIcon id="x" w="8" className="text-greyDark transition-all hover:text-grey" />
         </button>
-        <div className="flex flex-col bg-red-100 w-full">
+        <div className="flex flex-col bg-greyLight w-full">
           {images.map((src, index) => (
             <img key={index} src={src} alt={`Image ${index}`} className="w-full h-auto object-cover" />
           ))}

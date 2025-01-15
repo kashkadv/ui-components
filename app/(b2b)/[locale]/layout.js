@@ -47,7 +47,7 @@ export default async function RootLayout({ params, children }) {
   const dictionaries = await getDicitionaries()
 
   return (
-    <AppProvider initialSettings={settings} locale={locale} >
+    <AppProvider initialSettings={settings} locale={locale} scenario={scenario} dictionaries={dictionaries} >
       <CartProvider>
         <WishlistProvider>
           <html lang={locale} dir={direction}>

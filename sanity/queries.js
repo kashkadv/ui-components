@@ -5,6 +5,7 @@ export const getSettingsQuery = `*[_type == "intl"][0]`
 export const getAllCategoriesQuery = `
   *[_type == "category" && slug.current != null && !(_id in path('drafts.**'))] {
     title,
+    published,
     description,
     "slug": slug.current,
     "posterIsSet": poster.asset,
@@ -22,7 +23,7 @@ export const getCategoryBySlugQuery = `
   *[_type == "category" && slug.current == $slug && published && !(_id in path('drafts.**'))][0] {
     _id,
     title,
-    productTitle,
+    product_title,
     description
   }
 `
@@ -40,6 +41,22 @@ export const getCategoryProductsQuery = `
       title,
       productTitle,
       "slug": slug.current     
+    }
+  }
+`
+
+export const getProductBySlugQuery = `
+  *[_type == "product" && slug == $slug][0] {
+    title,
+    image,
+    gallery,
+    articul,
+    base_price,
+    sizes,
+    category->{
+      title,
+      "slug": slug.current,        
+      product_title       
     }
   }
 `
