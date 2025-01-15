@@ -22,10 +22,12 @@ async function CategoryCard({category, last, baseUrl }) {
       <div className={infoClassNames}>
         <Link href={href} className="text-h4 font-semibold text-greyDark leading-none font-secondary">{getLocalizedString(locale, category?.title)}</Link>
         <div className="desktop:col-span-2 h-full flex flex-col justify-between gap-6 laptop:gap-12">
-          <p className="font-normal font-primary text-grey">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla laoreet tortor ex, ut maximus eros mattis vitae. Vivamus at ex convallis, mattis quam ac, convallis lorem. Duis consequat rhoncus ipsum, ac fringilla odio condimentum vel.</p>
-          <Link href={href} className="py-2 text-body font-medium leading-none text-greenDark group hover:text-grey transition-all duration-500 flex gap-2 items-center">
+          <div className="font-normal font-primary text-grey">
+            {getLocalizedString(locale, category?.description)}
+          </div>
+          <Link href={href} className="py-2 text-body font-normal !underline tracking-wider leading-none text-green group hover:text-grey transition-all duration-500 inline-flex gap-2 items-center">
             {/* <span>{translate('buttons.buyBtnLabel')}</span> */}
-            <span>Переглянути</span>
+            <span>Перейти до категорії</span>
             <UseIcon id="arrow-right" w="4" className="group-hover:ml-2 group-hover:rtl:mr-2 transition-all" />
           </Link>
         </div>

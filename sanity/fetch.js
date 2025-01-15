@@ -3,7 +3,6 @@
 import { client } from "./client"
 import { getAllCategoriesQuery, getSettingsQuery, getCategoryBySlugQuery, getCategoryProductsQuery, getProductBySlugQuery } from "./queries"
 
-// q: query, c: config
 const requestConfigs = new Map([
   ["settings", {query: getSettingsQuery, config: { cache: "force-cache", next: { tags: ["settings"] }}}],
   ["categories", {query: getAllCategoriesQuery, config: { cache: "force-cache", next: { tags: ["categories"] }}}],
