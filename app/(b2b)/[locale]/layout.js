@@ -15,7 +15,7 @@ import { fetchSanity } from "@/sanity/fetch";
 import { getLangDir } from "rtl-detect";
 
 
-import { cookies, headers } from 'next/headers'
+import { headers } from 'next/headers'
 import { getDicitionaries } from "@/helpers/dictionaries";
 
 const lora = Lora({
@@ -41,9 +41,9 @@ export default async function RootLayout({ params, children }) {
   const { locale } = await params
   const direction = getLangDir(locale)
 
-  const headersList = await headers()
+  const headersList = await headers()  
   const scenario = headersList.get('scenario')
-
+  
   const dictionaries = await getDicitionaries()
 
   return (
@@ -55,8 +55,6 @@ export default async function RootLayout({ params, children }) {
             <body className={`${lora.variable} ${sofiaSans.variable} antialiased  cursor-default`}>
 
               <DesktopNavigation />
-
-              {scenario && scenario}
 
               <main className="p-6 laptop:p-12 desktop:px-24 max-w-full ">
                 {children}

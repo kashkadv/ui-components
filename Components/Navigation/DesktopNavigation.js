@@ -30,6 +30,4 @@ function DesktopNavigation() {
   )
 }
 
-
-
 export default DesktopNavigation

@@ -1,5 +1,6 @@
 // app/api/dictionaries/route.js
 
+import { getDicitionariesFromCookies } from "@/helpers/localization/server"
 import { fetchSanity } from "@/sanity/fetch"
 import { cookies } from "next/headers"
 
@@ -18,6 +19,7 @@ export async function GET() {
   }
 
   console.log('return new dictionary')
+
   const dictionaries = buildDictionaries(settings)
   updateCachedDictionaries(dictionaries)
 
@@ -26,11 +28,6 @@ export async function GET() {
 
 async function updateCachedDictionaries(dictionaries) {
   (await cookies()).set('dictionaries', JSON.stringify({ dictionaries: dictionaries, updatedAt: new Date() }))
-}
-
-async function getDicitionariesFromCookies() {
-  const dictionaries = (await cookies()).get('dictionaries')
-  return dictionaries ? JSON.parse(dictionaries.value) : null
 }
 
 async function getDicitionariesFromSanity() {
