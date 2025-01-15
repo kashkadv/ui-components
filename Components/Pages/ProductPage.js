@@ -58,12 +58,12 @@ function ProductPage({ product, size = null }) {
             <ProductGallery />
           </div>
           <div className="flex-1 flex flex-col items-stretch justify-between py-24">
-            <div className="flex flex-col gap-3">
+            <div className="flex flex-col gap-6">
               <div className="flex items-center gap-3 ">
                 <AddToWishlistButton />
                 <h1 className="text-4xl font-bold leading-none font-secondary">Product Title</h1>
+                <div className="text-grey text-small self-end ml-auto">SKU - 123456789</div>
               </div>
-              <div className="text-grey text-small mb-4">SKU: 123456789</div>
               <p className="w-full min-w-[300px] opacity-90 text-grey">Donec eget mi auctor, ultricies eros a, semper magna. Curabitur in semper risus. Proin a auctor dolor. Nunc luctus elit diam, et malesuada ligula faucibus dignissim. Maecenas eu elit eu erat elementum euismod. Nullam leo velit, lacinia ac lacus sit amet, convallis rutrum est.</p>
             </div>
             <ProductOrderBlock />

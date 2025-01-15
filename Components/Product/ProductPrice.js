@@ -4,7 +4,7 @@ import { formatPrice } from "@/helpers"
 const priceClasses = {
   'xs': 'text-xs',
   'sm': 'text-sm',
-  'lg': 'text-body leading-none',
+  'lg': 'text-body leading-none space-x-1',
   'xl': 'text-h3 h-fit leading-none font-bold gap-2 text-grey flex items-center'
 }
 
@@ -21,9 +21,9 @@ function ProductPrice({ size = 'lg', type = 'full', price }) {
 
   return (
     <div className={`${priceClasses[size]}  leading-none`}>
-      <span className={labelClasses[size]}>{currency.position === 'before' && `${currency.symbol} `}</span>
+      {currency.position === 'before' && <span className={labelClasses[size]}>{currency.symbol}</span>}
       <span>{formatPrice(price)}</span>
-      <span className={labelClasses[size]}>{currency.position === 'after' && ` ${currency.symbol}`}</span>
+      {currency.position === 'after' && <span className={labelClasses[size]}>{currency.symbol}</span>}
     </div>
   )
 }

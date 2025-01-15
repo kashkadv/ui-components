@@ -2,6 +2,7 @@
 
 import { toggleScrollbar } from "@/helpers"
 import { buildDictionaries } from "@/helpers/dictionaries"
+import { usePathname, useRouter } from "next/navigation"
 
 const { useContext, createContext, useState, use, useEffect, useMemo } = require("react")
 
