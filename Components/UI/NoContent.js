@@ -1,8 +1,10 @@
+import UseIcon from "./UseIcon"
+
 function NoContent({ message }) { 
   return (
     <div className="content-center text-center space-y-6">
-      <div>Image</div>
-      <div className="text-h4">{message}</div>
+      <UseIcon id="sheep" w="32" className="text-white mx-auto opacity-50" />
+      <div className="text-h5 font-black tracking-wide">{message}</div>
     </div>
   )
 }

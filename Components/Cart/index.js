@@ -6,6 +6,7 @@ import UseIcon from "../UI/UseIcon"
 import Sidebar from "../UI/Sidebar"
 import { useCartContext } from "@/context/CartContext"
 import NoContent from "../UI/NoContent"
+import ProductCard from "../Product/ProductCard"
 
 function CartTrigger() {
   const { handleCartOpen } = useAppContext()
@@ -37,7 +38,11 @@ function CartList() {
   // TODO add message when cart is empty
   if (!cart || cart.length === 0) return <NoContent message="Empty Cart Message" />
 
-  return 'Cart List'
+  return (
+    <div className="w-full h-dvh py-12 overflow-y-scroll no-scrollbar bg-green-100 space-y-6 content-center">
+      {cart.map((cartItem, i) => <ProductCard key={i} product={cartItem} type='list' />)}
+    </div>
+  )
 }
 
 export { CartTrigger, Cart }

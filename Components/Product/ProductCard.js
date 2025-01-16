@@ -55,9 +55,9 @@ function DefaultCardShort() {
   const {product} = useContext(ProductContext)
 
   return (
-    <Link href={`/product/${product.sid ? product.sid : product.id}`} className="relative bg-white p-12 group">
+    <Link href={`/product/${product.sid ? product.sid : product.articul}`} className="relative bg-white p-12 group">
       <div className="relative w-full overflow-hidden aspect-[3/4] shadow-xl group-hover:shadow-none transition-all duration-500">
-        <Image className="scale-[103%]" fill src={product.images[0]} alt={product.name} />
+        <Image className="scale-[103%] object-cover" fill src={product.image} alt="wishlist product" />
       </div>
     </Link>
   )
@@ -67,18 +67,17 @@ function ListCard() {
   const {product} = useContext(ProductContext)
 
   return (
-    <Link href={`/product/${product.id}`} className="relative ">
-      <div className="relative w-full overflow-hidden aspect-[3/4] shadow-xl group-hover:shadow-none transition-all duration-500">
-        <Image className="scale-[103%]" fill src={product.images[0]} alt={product.name} />
+    <div className="relative flex w-1/2 max-w-full mx-auto bg-white p-6 gap-6">
+      <div className="relative w-48 overflow-hidden aspect-[3/4] shadow-xl group-hover:shadow-none transition-all duration-500">
+        <Image className="scale-[103%]" fill src={product.image} alt={product.sid} />
       </div>      
-      <div className="flex items-end justify-between w-full ">
-        <ProductCardSizes />
+      <div className="flex items-end justify-between w-full">
         <div className="flex flex-col gap-1 text-right">
-          <div className="pt-6 flex-shrink-0 w-max text-right font-semibold text-body">{product.name}</div>
-          <div className="font-semibold text-grey leading-none"><ProductPrice price={product.base_price} /></div>
+          <Link href={`/product/${product.sid || product.articul}`} className="pt-6 flex-shrink-0 w-max text-right font-semibold text-body">{product.sid}</Link>
+          {/* <div className="font-semibold text-grey leading-none"><ProductPrice price={product.sid} /></div> */}
         </div>
       </div>
-    </Link>
+    </div>
   )
 }
 

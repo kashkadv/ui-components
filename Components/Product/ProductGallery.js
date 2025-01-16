@@ -54,6 +54,7 @@ function ProductGallery() {
   return (
     <div className="relative flex items-center justify-center w-full bg-white/90 px-12 pt-12 pb-24  h-full shadow-xl">
       <div ref={containerRef} onClick={handlePopupState} className="cursor-pointer w-full h-full overflow-y-scroll no-scrollbar relative">
+        <div className="absolute bg-greyLight w-full h-full animate-pulse"></div>
         {images.map((src, index) => (
           <div key={index} data-index={index} className="image-item aspect-[3/4] relative">
             <Image src={src} alt={`Image ${index + 1}`} fill />

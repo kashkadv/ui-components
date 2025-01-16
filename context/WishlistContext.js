@@ -31,7 +31,7 @@ function WishlistProvider({ children }) {
   }
 
   const handleProductWishlistState = (product, size = null) => {
-    const sid = size ? `${product.id}_${size.label}` : product.id
+    const sid = size ? `${product.articul}_${size._key}` : product.articul
 
     isSidInWishlist(sid)
       ? removeFromWishlist(sid)

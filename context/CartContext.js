@@ -1,34 +1,57 @@
 'use client'
 
-const { createContext, useState, useContext } = require("react")
+import { useAppContext } from "./AppContext"
+
+const { createContext, useState, useContext, useEffect } = require("react")
 
 const CartContext = createContext()
 
 function CartProvider({ children }) {
   const [cart, setCart] = useState([])
+  const {handleCartOpen} = useAppContext()
+  
+  useEffect(() => {
+    const storedCart = localStorage.getItem('cart')
+    setCart(JSON.parse(storedCart) || [])
+  }, [])
 
-  const isInCart = (product) => {
-    return false
+  const isInCart = (sid) => {
+    console.log('cart - sid',sid)
+    return cart.find((cartItem) => cartItem.sid === sid)
   }
 
-  const handleProductCartState = (product) => {
-    isInCart(product)
-      ? removeFromCart(product)
-      : addToCart(product)
+  const handleProductCartState = (product, size = null) => {
+    const sid = size ? `${product.articul}_${size._key}` : product.articul
+
+    if (isInCart(sid)) {
+      const cartItem = cart.find((cartItem) => cartItem.sid === sid)
+      cartItem.qty++
+
+      updateCart(cart, true)
+    } else {
+      addToCart({ ...product, sid, selectedSize: size, qty: 1 })
+    }
+  }
+
+  const updateCart = (newCart, open = false) => {
+    setCart(newCart)
+    localStorage.setItem('cart', JSON.stringify(newCart))
+
+    if (open) handleCartOpen()
   }
 
   const addToCart = (product) => {
     const newCart = [...cart, product]
-    setCart(newCart)
+    updateCart(newCart, true)
   }
 
-  const removeFromCart = (product) => {
-    const newCart = cart.filter((cartItem) => cartItem.id !== product.id)
-    setCart(newCart)
+  const removeFromCart = (sid) => {
+    const newCart = cart.filter((cartItem) => cartItem.sid !== sid)
+    updateCart(newCart)
   }
 
   return (
-    <CartContext.Provider value={{ cart, addToCart, removeFromCart }}>
+    <CartContext.Provider value={{ cart, addToCart, removeFromCart, handleProductCartState }}>
       {children}
     </CartContext.Provider>
   )

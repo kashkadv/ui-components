@@ -4,7 +4,7 @@ import ProductGallery from "@/Components/Product/ProductGallery";
 import ProductInfoAccordion from "@/Components/Product/ProductInfoAccordion";
 import ProductInfoNavigation from "@/Components/Product/ProductInfoNavigation";
 import ProductOrderBlock from "@/Components/Product/ProductOrderBlock";
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, use, useContext, useEffect, useState } from "react";
 import { AddToWishlistButton } from "../Wishlist";
 
 const info = [
@@ -33,7 +33,7 @@ function ProductPage({ product, size = null }) {
   const [activeSize, setActiveSize] = useState(product?.sizes?.length > 0 ? product?.sizes[0] : null)
 
   useEffect(() => {
-    if (size) setActiveSize(product?.sizes?.find((productSize) => productSize.label == size))
+    if (size) setActiveSize(product?.sizes?.find((productSize) => productSize._key == decodeURIComponent(size)))
   }, [])
 
   const openAccordionTab = (index, scroll = false) => {

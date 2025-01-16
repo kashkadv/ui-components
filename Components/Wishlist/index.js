@@ -13,7 +13,7 @@ function AddToWishlistButton() {
   const { product, activeSize} = useProductPage()
   const { isSidInWishlist, handleProductWishlistState } = useWishlistContext()
 
-  const sid = activeSize ? `${product.id}_${activeSize.label}` : product.id
+  const sid = activeSize ? `${product.articul}_${activeSize._key}` : product.articul
   const full = isSidInWishlist(sid)
 
   // TODO tooltip message when product is already in wishlist + transition
