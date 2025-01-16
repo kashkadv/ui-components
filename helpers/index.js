@@ -71,6 +71,8 @@ export function formatPrice(price) {
 }
 
 export function buildSize(product, data) {
+  if (!data) return
+
   let label = data.name
   let key =  data._key
 
@@ -87,4 +89,17 @@ export function buildSize(product, data) {
     availability: data.stock > 0,
     price: product.base_price + data.additional_price
   }
+}
+
+export function getSizeLabel(sid) {
+  if (!sid) return null
+  
+  const [_, size] = String(sid).split('_')
+  if (!size) return null
+
+  return size
+}
+
+export function getPrice(product, size = null) {
+  return Number(product.base_price) + (size ? Number(size.additional_price) : 0)
 }

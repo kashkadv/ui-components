@@ -8,6 +8,7 @@ import ProductCard from "../Product/ProductCard";
 import { useWishlistContext } from "@/context/WishlistContext";
 import NoContent from "../UI/NoContent";
 import { useProductPage } from "../Pages/ProductPage";
+import { getSizeLabel } from "@/helpers";
 
 function AddToWishlistButton() {
   const { product, activeSize} = useProductPage()
@@ -55,15 +56,6 @@ function WishlistList() {
   // TODO add message when wishlist is empty
   if (!items || items.length === 0) return <NoContent message="Empty Wishlist Message" />
 
-  const SizeLabel = ({sid}) => {
-    if (!sid) return null
-    
-    const [_, size] = String(sid).split('_')
-    if (!size) return null
-
-    return <div className="absolute bottom-3 left-12 text-h6 text-grey font-bold">{size}</div>
-  }
-
   const handleRemove = (e, sid) => {
     e.stopPropagation()
     e.preventDefault()
@@ -79,7 +71,7 @@ function WishlistList() {
               <UseIcon id="x" w="8" />
             </Button>
             <ProductCard product={item} sid={item.sid} type="defaultShort" />
-            <SizeLabel sid={item.sid} />
+            <div className="absolute bottom-3 left-12 text-h6 text-grey font-bold">{getSizeLabel(item.sid)}</div>
           </div>
         ))}
       </div>

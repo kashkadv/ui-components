@@ -8,7 +8,7 @@ const CartContext = createContext()
 
 function CartProvider({ children }) {
   const [cart, setCart] = useState([])
-  const {handleCartOpen} = useAppContext()
+  const {handleCartOpen, cartOpen} = useAppContext()
   
   useEffect(() => {
     const storedCart = localStorage.getItem('cart')
@@ -16,7 +16,6 @@ function CartProvider({ children }) {
   }, [])
 
   const isInCart = (sid) => {
-    console.log('cart - sid',sid)
     return cart.find((cartItem) => cartItem.sid === sid)
   }
 
@@ -48,6 +47,12 @@ function CartProvider({ children }) {
   const removeFromCart = (sid) => {
     const newCart = cart.filter((cartItem) => cartItem.sid !== sid)
     updateCart(newCart)
+
+    if (newCart.length === 0) {
+      setTimeout(() => {
+        if (cartOpen) handleCartOpen()
+      }, 1000)
+    }
   }
 
   return (
