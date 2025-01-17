@@ -13,12 +13,9 @@ export async function GET() {
   if (storedDictionaries) {
     const cachedDate = new Date(storedDictionaries.updatedAt)    
     if (newDate.getTime() <= cachedDate.getTime()) {
-      console.log('return stored dictionary')
       return new Response(JSON.stringify(storedDictionaries.dictionaries))
     }
   }
-
-  console.log('return new dictionary')
 
   const dictionaries = buildDictionaries(settings)
   updateCachedDictionaries(dictionaries)

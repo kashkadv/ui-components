@@ -12,7 +12,7 @@ function CartTrigger() {
   const { handleCartOpen } = useAppContext()
   const { cart } = useCartContext()
 
-  const labelFullClassNames = cart.length !== 0 && "opacity-100"
+  const labelFullClassNames = cart && cart.length !== 0 && "opacity-100"
 
   return (
     <Button onClick={handleCartOpen} className="relative text-greyDark focus:text-greyDark hover:text-greyLight">

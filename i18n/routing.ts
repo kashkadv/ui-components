@@ -7,12 +7,12 @@ export const routing = defineRouting({
   localeDetection: false,
   domains: [
     {
-      domain: 'localhost:3000',
+      domain: process.env.HOST,
       defaultLocale: 'uk',
       locales: ['uk'],
     },
     {
-      domain: 'world.localhost:3000',
+      domain: `world.${process.env.HOST}`,
       defaultLocale: 'en',
       locales: ['en', 'ar']
     }
