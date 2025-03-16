@@ -108,7 +108,7 @@ function Sidebar({ isOpen, direction = "right", callback, className = "", childr
 
   return (
     <div
-      className={`animate-all fixed top-0 left-0 w-full h-full flex justify-center items-center z-50 p-6 laptop:p-12 ${stateClassNames} ${className}`}
+      className={`animate-all fixed top-0 left-0 w-full h-full flex justify-center items-center z-50 ${stateClassNames} ${className}`}
       style={{
         pointerEvents: isOpen ? 'auto' : 'none',
       }}

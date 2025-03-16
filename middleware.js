@@ -2,10 +2,13 @@ import createMiddleware from 'next-intl/middleware';
 import { routing } from './i18n/routing';
 
 export default async function middleware(request) {
-  const { geo, nextUrl } = request
+  const { geo, headers } = request
 
   const response = createMiddleware(routing)
-  request.headers.set('scenario', 'local')
+  const host = headers.get('host')
+
+  const scenario = host.startsWith('world.') ? 'world' : 'local'
+  headers.set('scenario', scenario)
 
   return response(request)
 }

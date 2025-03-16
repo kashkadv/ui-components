@@ -12,8 +12,8 @@ export default {
     extend: {
       screens: {
         'tablet': '768px',
-        'laptop': '1200px',
-        'desktop': '1400px',
+        'laptop': '1366px',
+        'desktop': '1920px',
       },
 
       fontFamily: {

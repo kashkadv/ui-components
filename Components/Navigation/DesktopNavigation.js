@@ -6,14 +6,20 @@ import Link from "next/link"
 import { CartTrigger } from "../Cart"
 import {DesktopMenuTrigger} from "../Menu"
 import { WishlistTrigger } from "../Wishlist"
+import { usePathname } from "next/navigation"
 
 const distance = 48
 
 function DesktopNavigation() {
   const scrolled = useScrollPosition() >= distance
+  const pathname = usePathname()
+
+  const isCheckout = pathname.includes('/checkout')
+  console.log(isCheckout)
 
   const barClassNames = scrolled ? 'bg-white/90 backdrop-blur-sm w-full duration-700' : 'mx-12 desktop:mx-24 bg-white shadow-sm backdrop-blur-none duration-300'
 
+  if (isCheckout) return null
   return (
     <div className={`hidden laptop:flex group mt-12 z-10 w-full sticky top-0`}>
       <div className={`h-16 w-full transition-all duration-500 flex items-center justify-between px-12  ${barClassNames}`}>

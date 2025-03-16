@@ -26,7 +26,6 @@ async function CategoryCard({category, last, baseUrl }) {
             {getLocalizedString(locale, category?.description)}
           </div>
           <Link href={href} className="py-2 text-body font-normal !underline tracking-wider leading-none text-green group hover:text-grey transition-all duration-500 inline-flex gap-2 items-center">
-            {/* <span>{translate('buttons.buyBtnLabel')}</span> */}
             <span>Перейти до категорії</span>
             <UseIcon id="arrow-right" w="4" className="group-hover:ml-2 group-hover:rtl:mr-2 transition-all" />
           </Link>

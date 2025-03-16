@@ -8,6 +8,7 @@ import ImagePlaceholder from "../UI/ImagePlaceholder"
 import { getLocalizedString } from "@/helpers/localization"
 import { useAppContext } from "@/context/AppContext"
 import { buildSize, getPrice, getSizeLabel } from "@/helpers"
+import { CartQtyControls } from "../Cart"
 
 const ProductContext = createContext()
 
@@ -90,18 +91,23 @@ function CartListCard() {
   const price = getPrice(product, product.selectedSize)
 
   return (
-    <div className="relative flex gap-6">
+    <div className="relative flex gap-6 items-center">
       <div className="relative w-48 overflow-hidden aspect-[3/4] shadow-xl group-hover:shadow-none transition-all duration-500">
         <Image className="scale-[103%]" fill src={product.image} alt={product.sid} />
       </div>      
-      <div className="flex justify-between w-full">
-        <div className="flex flex-col gap-1 text-right">
-          <Link href={`/product/${product.sid || product.articul}`} className="text-body">{getLocalizedString(locale, product.title || product.category.product_title)}</Link>
-          <div>{product.articul}</div>
-          <div>{product.qty}</div>
-          {size && <div>{size.label}</div>}
-          
+      <div className="flex flex-1 flex-col gap-1 text-right">
+        <Link href={`/product/${product.sid || product.articul}`} className="text-black font-semibold flex justify-between w-full items-center">
+          <div className="flex gap-2">
+            <span>{getLocalizedString(locale, product.title || product.category.product_title)}</span>
+            <span> - </span>
+            <span>{size && size.label}</span>
+          </div>
+          <span className="text-grey text-small">(sku: {product.articul})</span>
+        </Link>
+
+        <div className="flex justify-between w-full">
           <div className="font-semibold text-grey leading-none"><ProductPrice price={price} /></div>
+          <CartQtyControls item={product} />
         </div>
       </div>
     </div>

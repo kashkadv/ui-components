@@ -39,6 +39,23 @@ function CartProvider({ children }) {
     if (open) handleCartOpen()
   }
 
+  const updateCartItem = (sid, qty) => {
+    if (qty === 0) {
+      removeFromCart(sid)
+      return
+    }
+
+    const newCart = cart.map((cartItem) => {
+      if (cartItem.sid === sid) {
+        cartItem.qty = qty
+      }
+
+      return cartItem
+    })
+
+    updateCart(newCart)
+  }
+
   const addToCart = (product) => {
     const newCart = [...cart, product]
     updateCart(newCart, true)
@@ -51,12 +68,12 @@ function CartProvider({ children }) {
     if (newCart.length === 0) {
       setTimeout(() => {
         if (cartOpen) handleCartOpen()
-      }, 1000)
+      }, 2000)
     }
   }
 
   return (
-    <CartContext.Provider value={{ cart, addToCart, removeFromCart, handleProductCartState }}>
+    <CartContext.Provider value={{ cart, addToCart, removeFromCart, handleProductCartState, updateCartItem }}>
       {children}
     </CartContext.Provider>
   )

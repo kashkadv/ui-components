@@ -103,3 +103,7 @@ export function getSizeLabel(sid) {
 export function getPrice(product, size = null) {
   return Number(product.base_price) + (size ? Number(size.additional_price) : 0)
 }
+
+export const isLastInArray = (array, index) => {
+  return index === array.length - 1
+}

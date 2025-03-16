@@ -7,10 +7,10 @@
   --foreground: #282828;
   --greyLight: #d5d5d5;
   --grey: #767676;
-    --greyDark: #2f2f2f;
-    --greenDark: #4B654A;
-    --green: #6e836e;
-    --greenLight: #b7c1b6;
+  --greyDark: #2f2f2f;
+  --greenDark: #4B654A;
+  --green: #6e836e;
+  --greenLight: #b7c1b6;
   --font-size-body: 1.25rem;
 }
 
@@ -18,7 +18,7 @@
   :root {
     /* --background: #282828;
     --foreground: #f9f6ef; */
-    --background: #e8e8e7;
+    --background: #F8F8F7;
     --foreground: #282828;
   }
 }
